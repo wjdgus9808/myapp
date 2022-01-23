@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Home from "./router/Home.js";
+import Detail from "./router/Detail.js";
 function App() {
-  const [toDo, setToDo] = useState("");
-  const onChange = (event) => setToDo(event.target.value);
   return (
-    <div>
-      <form>
-        <input
-          onChange={onChange}
-          value={toDo}
-          type="text"
-          placeholder="Write your to do"
-        ></input>
-      </form>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/movie/:id">
+          <Detail />
+        </Route>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
